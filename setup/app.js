@@ -4,10 +4,14 @@ const img = document.querySelector('.container img');
 const content = document.querySelector('.content');
 
 
-btn.addEventListener('click', () => {
-    fetch(URL)
-    .then((data) => data.json())
-    .then((response) => displayData(response));
+btn.addEventListener('click', async () => {
+    try {
+        const data = await fetch(URL);
+        const response = await data.json();
+        displayData(response);
+      } catch (error) {
+        console.log(error);
+      }
 });
 
 function displayData(data){
